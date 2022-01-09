@@ -48,7 +48,7 @@ export const Login : NextPage<LoginProps> = ({setToken}) => {
     }
 
     return (
-        <div className="container-l      ogin">
+        <div className="container-login">
             <img src="/logo.svg" alt="Logo Fiap" className="logo" />
             <div className="form">
                 {msgError && <p>{msgError}</p>}

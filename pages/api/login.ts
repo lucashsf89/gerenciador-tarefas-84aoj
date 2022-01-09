@@ -1,8 +1,8 @@
 import md5 from 'md5';
 import type {NextApiRequest, NextApiResponse} from 'next';
-import { connectDb } from '../../Middlewares/connectDb';
+import { connectDb } from '../../middlewares/connectDb';
 import { UserModel } from '../../models/UserModel';
-import { DefaultResponseMsg } from '../../types/DefaultResponseMessage';
+import { DefaultResponseMsg } from '../../types/DefaultResponseMsg';
 import { LoginRequest } from '../../types/LoginRequest';
 import jwt from 'jsonwebtoken';
 import { LoginResponse } from '../../types/LoginResponse';
@@ -17,7 +17,7 @@ const loginEndpoint = async(req : NextApiRequest,
     
 
     if(req.method === 'POST'){
-        const body = JSON.parse(req.body) as LoginRequest;
+        const body = req.body as LoginRequest;
         if(!body || !body.login || !body.password){
             return res.status(400).json({ error : 'Favor informar usuário e senha'});
         }

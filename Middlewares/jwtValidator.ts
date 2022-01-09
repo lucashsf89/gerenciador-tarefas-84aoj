@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse, NextApiHandler} from 'next';
 import mongoose from 'mongoose';
-import { DefaultResponseMsg } from '../types/DefaultResponseMessage';
+import { DefaultResponseMsg } from '../types/DefaultResponseMsg';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
 export const jwtValidator = (handler : NextApiHandler) => 
@@ -23,25 +23,21 @@ export const jwtValidator = (handler : NextApiHandler) =>
             }
     
             const token = authorization.substr(7);
-            console.log(token);
             if(!token){
                 return res.status(400).json({error : 'Token de segurança não informado'});
             }
     
             const decode = await jwt.verify(token, MY_SECRET_KEY) as JwtPayload;
-            console.log(decode);
             if(!decode){
                 return res.status(400).json({error : 'Não foi possível validar o token de segurança'});
             }
     
-            console.log(decode._id);
             if(req.body){
                 req.body.userId = decode._id;
             }else if(req.query){
                 req.query.userId = decode._id;
             }
         }catch(e){
-            console.log(e);
             return res.status(400).json({error : 'Não foi possível validar o token de segurança'});
         }
     }

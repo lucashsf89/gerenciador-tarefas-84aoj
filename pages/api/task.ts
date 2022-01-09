@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { DefaultResponseMsg } from '../../types/DefaultResponseMessage';
-import { connectDb } from '../../Middlewares/connectDb';
-import { jwtValidator } from '../../Middlewares/jwtValidator';
+import { DefaultResponseMsg } from '../../types/DefaultResponseMsg';
+import { connectDb } from '../../middlewares/connectDb';
+import { jwtValidator } from '../../middlewares/jwtValidator';
 import { TaskRequest } from '../../types/TaskRequest';
 import moment from 'moment';
 import { TaskModel } from '../../models/TaskModel';
-import { GetTasksParams } from '../../types/GetTaskParams';
+import { GetTasksParams } from '../../types/GetTasksParams';
 
 const taskEndpoint = async (req: NextApiRequest, res: NextApiResponse<DefaultResponseMsg | any>) => {
 

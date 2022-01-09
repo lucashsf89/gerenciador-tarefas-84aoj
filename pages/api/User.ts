@@ -1,7 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
-import { DefaultResponseMsg } from '../../types/DefaultResponseMessage';
+import { DefaultResponseMsg } from '../../types/DefaultResponseMsg';
 import { UserRequest } from '../../types/UserRequest';
-import { connectDb} from '../../Middlewares/connectDb';
+import { connectDb} from '../../middlewares/connectDb';
 import md5 from 'md5';
 import { UserModel } from '../../models/UserModel';
 
